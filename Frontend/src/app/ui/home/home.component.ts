@@ -21,9 +21,7 @@ export class HomeComponent implements OnInit {
   }
  
   change() {
-    this.con.getAccount();
     console.log("AFS");
-    
   }
 
 }

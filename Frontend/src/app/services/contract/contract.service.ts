@@ -13,35 +13,30 @@ declare let window: any;
 })
 
 export class ContractService {
-
-  private web3Provider: null;
+  private web3Provider: null;  
   private accounts: string[];
   public accountsObservable = new Subject<string[]>();
   public compatible: boolean;
-  account:any;
+  private _tokenContract: any;
+  private _tokenContractAddress: string = "0x18d3b7b3b66710ce48a01f14d377d67a09ea4981";
+  private _account: any;
+
   constructor(private snackbar: MdcSnackbar) {
     if (typeof window.web3 === 'undefined' || (typeof window.ethereum !== 'undefined')) {
       this.web3Provider = window.ethereum || window.web3;
       window.web3 = new Web3(this.web3Provider);
     } else {
-      this.web3Provider = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:9545'));
+      console.warn(
+        'Please use a dapp browser like mist or MetaMask plugin for chrome'
+      );
+      this.web3Provider = new Web3(new Web3.providers.HttpProvider('https://rpc-mumbai.matic.today'));
       // if you are using linux or ganche cli maybe the port is  http://localhost:8545
       //   Web3.providers.HttpProvider.prototype.sendAsync = Web3.providers.HttpProvider.prototype.send;
       //   this.web3Provider = new Web3(new Web3.providers.HttpProvider('https://rinkeby.infura.io/v3/Private_key'));
       // Change with your credentials as the test network and private key in infura.io
     }
-    window.web3.eth.getAccounts().then( function(a) {this.account=a[0]});
-    // var accountInterval = setInterval(function() {
-    //   if (Web3.eth.accounts[0] !== this.account) {
-    //     this.account = Web3.eth.accounts[0];
-    //     document.getElementById("address").innerHTML = this.account;
-    //   }
-    // }, 100);
   }
-  getAccount() {
-    console.log("Dsg")
-    console.log(contract(tokenAbi));
-  }
+
   seeAccountInfo() {
     return new Promise((resolve, reject) => {
       window.web3.eth.getCoinbase((err, account) => {

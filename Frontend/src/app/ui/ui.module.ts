@@ -7,9 +7,10 @@ import { UiRoute } from './ui.routes';
 import { RouterModule } from '@angular/router';
 import { AccountComponent } from './account/account.component';
 import { HomeComponent } from './home/home.component';
+import { HospitalsComponent } from './hospitals/hospitals.component';
 
 @NgModule({
-  declarations: [TopNavComponent, AccountComponent, HomeComponent],
+  declarations: [TopNavComponent, AccountComponent, HomeComponent, HospitalsComponent],
   imports: [
     AppMaterialModule,
     CommonModule,
