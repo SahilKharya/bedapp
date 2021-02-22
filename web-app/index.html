@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hospitals</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  <script src="./node_modules/web3/dist/web3.min.js"></script>
+  <script src="./index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-light" style="justify-content: center;">
+    <h1 class="page-header">Hospitals- Book a Bed Dapp</h1>
+
+  </nav>
+  <br>
+  <div class="container">
+<div class="text-center" style="background-color: cornflowerblue; border-radius: 5px; text-align: center;">
+  <p style="color: whitesmoke; text-align: center;">Current Ethereum Price (in INR): <h5 id="eth_inr"> </h5> </p>
+
+  </div>
+<br>
+    <div class="row">
+
+      <div class="col-md-4">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#AddHospital"
+          aria-expanded="false" aria-controls="AddHospital">Add Hospital</button>
+
+        <div class="collapse multi-collapse" id="AddHospital">
+          <div class="card">
+            <br>
+            <h3>New Hospital Info</h3>
+            <form>
+              <div class="form-group">
+                <label for="name">Hospital Name</label>
+                <input type="text" class="form-control" id="name">
+              </div>
+              <div class="form-group">
+                <label for="city">Hospital City</label>
+                <input type="text" class="form-control" id="city">
+
+              </div>
+              <div class="form-group">
+                <label for="beds">No of Beds Available</label>
+                <input type="number" class="form-control" id="beds">
+              </div>
+              <div class="form-group">
+                <label for="gov">Hospital is Private</label>
+                <select class="select" id="gov">
+                  <option selected>Open this select menu</option>
+                  <option value="true">True</option>
+                  <option value="false">False</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="price">Price of a Bed</label>
+                <input type="number" class="form-control" id="price">
+              </div>
+              <button onclick="addHospitalInfo()" type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#GetHospitalInfo"
+          aria-expanded="false" aria-controls="GetHospitalInfo">Hospital Info</button>
+        <div class="collapse multi-collapse" id="GetHospitalInfo">
+          <div class="card">
+
+            <br>
+            <h3>Get Hospital Info using ID</h3>
+            <form>
+              <div class="form-group">
+                <label for="name">Hospital Id</label>
+                <input type="number" class="form-control" id="hospitalID">
+              </div>
+              <button onclick="getHospitalInfo()" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <div class="card">
+              <p>Name: <span id="hName"></span></p>
+              <p>City: <span id="hCity"></span></p>
+
+              <p>No. of Beds: <span id="hBedsNo"></span></p>
+
+              <p>Hospital is Private: <span id="private"></span></p>
+              <p>Price of Bed: <span id="bedPrice"></span></p>
+              <p>Bed Available: <span id="availableNo"></span></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 text-right" style="float: right;">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#bookBed"
+          aria-expanded="false" aria-controls="bookBed" style="text-align: center;">Bood A Bed</button>
+        <div class="collapse multi-collapse text-left" id="bookBed">
+          <div class="card">
+            <br>
+            <h3 class="sub-header">Book Bed With Hospital Id</h3>
+            <form>
+              <div class="form-group">
+                <label for="name">Hospital Id</label>
+                <input type="number" class="form-control" id="bookBedID">
+              </div>
+              <button onclick="bookBed()" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
